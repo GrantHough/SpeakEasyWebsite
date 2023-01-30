@@ -1,7 +1,67 @@
 #main-container {
+    padding: 20px;
     
-
+    font-family: 'Plus Jakarta Sans', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
+
+.large-title {
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.subtitle {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.blue-text {
+    color: #3a95d5;
+}
+
+#homepage-title {
+    margin-bottom: 10px;
+}
+
+#homepage-catchphrase {
+    margin-bottom: 20px;
+}
+
+.text-area {
+    height: 240px;
+    width: 480px;
+    padding: 12px;
+    resize: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.submit-btn {
+    width: 140px;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(72, 76, 122);
+    font-size: 20px;
+    height: 42px;
+    padding: 6px 18px;
+    border-radius: 40px;
+    background-image: linear-gradient(180deg,#fff,#f5f5fa);
+    box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
+    transition: all .2s ease-out;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.submit-btn hover {
+    box-shadow: 0 8px 22px 0 rgb(37 44 97 / 20%), 0 4px 6px 0 rgb(93 100 148 / 25%);
+}
+

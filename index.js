@@ -1,7 +1,7 @@
 const azureLink = "https://speakeasy.azurewebsites.net/";
 
-$('#submit-btn').on('click', function() {
-    var serverCall = contactServerRephrase($("#text-area").val(), azureLink + 'newsentence').then(response => {
+$('#main-submit-btn').on('click', function() {
+    var serverCall = contactServerRephrase($("#main-text-area").val(), azureLink + 'newsentence').then(response => {
         console.log(response);
     });
 })
