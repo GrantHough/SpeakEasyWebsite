@@ -33,7 +33,9 @@
     margin-bottom: 20px;
 }
 
-.text-area {
+.div-text-area {
+    background-color: white;
+    outline: 2px solid #d8d8d8;
     height: 240px;
     width: 480px;
     padding: 12px;
