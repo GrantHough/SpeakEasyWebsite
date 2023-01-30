@@ -15,7 +15,7 @@ async function sendHttpRequest(method, url, data) {
         mode: 'cors',
         headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://granthough.github.io'} : {}
      }).then(async (response) => {
-        return (await response);
+        return (await response.json());
      }) 
     return(await contact);
     
