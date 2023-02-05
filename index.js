@@ -47,11 +47,14 @@ $("#homepage-editor").on('message', function() {
                 console.log(error);
             })
             .then(response => {
+                console.log(response);
                 originalSentences = response.original;
                 rephrasedSentences = response.rephrased;
+                console.log(originalSentences);
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
                     if (originalSentences[i] != rephrasedSentences[i]) {
+                        console.log(originalSentences[i]);
                         $.get("errorPopup.html", function (errorPopupData) {
                             var newErrorPopupData = errorPopupData;
                             newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
