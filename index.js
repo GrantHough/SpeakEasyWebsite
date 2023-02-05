@@ -59,7 +59,7 @@ $("#homepage-editor").on('message', function() {
     
                             //Appending errorContent with functionality
                             $("#error-content").append(newErrorPopupData);
-                            popupErrorButtonsLogic(0, errorIndex);
+                            // popupErrorButtonsLogic(0, errorIndex);
                             errorIndex++;
                             $("#error-content").toggleClass("hidden");
     
