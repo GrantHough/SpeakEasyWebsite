@@ -1,6 +1,5 @@
-
 const azureLink = "https://speakeasy.azurewebsites.net/";
-
+var lastTrigger = 0;
 
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
@@ -15,7 +14,7 @@ function timer(amount) {
     $("#homepage-editor").trigger('message');
     messageTimeout = setTimeout(() => {
         timer(amount);
-        counter++;
+        lastTrigger++;
     }, amount);
 }
 
@@ -23,7 +22,9 @@ timer(4000);
 
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
-    console.log($(this).html());
+    //get rid of excessive spaces, might be erroneous, check this out later
+    text = $(this).html().replace("   ", "")
+    console.log(text);
 })
 
 async function sendHttpRequest(method, url, data) {
