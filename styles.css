@@ -460,6 +460,7 @@ body {
     bottom: 20px;
     right: 32px;
     opacity: 86%;
+    cursor: pointer;
 }
 
 #homepage-editor-logo:focus {
@@ -475,4 +476,8 @@ body {
     color: #d8d8d8;
     display: flex;
     flex-direction: column;
+}
+
+#error-popup.hidden {
+    display: none;
 }

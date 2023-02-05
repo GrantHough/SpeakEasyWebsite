@@ -10,7 +10,7 @@ $("#homepage-editor").on("input keypress paste", function(event) {
         event.preventDefault();
         return false;
     }
-})
+});
 
 //recursive function to trigger message to server every n milliseconds
 function timer(amount) {
@@ -57,7 +57,11 @@ $("#homepage-editor").on('message', function() {
     } else {
         lastTrigger++;
     }  
-})
+});
+
+$("#homepage-editor-logo").on("click", function() {
+    $("#error-popup").toggleClass('hidden');
+});
 
 async function sendHttpRequest(method, url, data) {
     var contact = fetch(url, {
