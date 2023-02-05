@@ -31,6 +31,7 @@ $("#homepage-editor").on('message', function() {
     //get rid of excessive spaces, might be erroneous, check this out later
     text = $(this).html().replaceAll("   ", "")
     text = text.replaceAll("\n", "")
+    var errorIndex = 1;
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
