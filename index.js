@@ -50,16 +50,16 @@ $("#homepage-editor").on('message', function() {
                 console.log(response);
                 originalSentences = response.original;
                 rephrasedSentences = response.rephrased;
-                console.log(originalSentences);
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
                     if (originalSentences[i] != rephrasedSentences[i]) {
-                        console.log(originalSentences[i]);
                         $.get("errorPopup.html", function (errorPopupData) {
                             var newErrorPopupData = errorPopupData;
+                            var originalSentence = originalSentences[i];
+                            var rephrasedSentence = rephrasedSentences[i];
                             newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
-                            newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentences[i]);
-                            newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentences[i]);
+                            newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
+                            newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
     
                             //Appending errorContent with functionality
                             $("#error-content").append(newErrorPopupData);
@@ -120,7 +120,7 @@ function popupErrorButtonsLogic(errorIndex) {
 
             //Checking if last popup error resolved
             var errorContentChildren = $("#error-content").children().length;
-            if (errorContentChildren == 0) {
+            if (errorContentChildren <= 0) {
                 $("#error-content").addClass('hidden');
                 $("#default-content").removeClass('hidden');
                 $("#homepage-editor-logo").css('opacity', '100%');
@@ -137,7 +137,6 @@ function popupErrorButtonsLogic(errorIndex) {
     $("#ignore-btn[error-index='"+ errorIndex + "']").on("click", function() {
 
         realErrorIndex = $(this).attr('error-index');
-        realCurEasyIndex = $(this).attr('easy-index');
         //Add to rejected list
         var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
         rejectedSet.add(originalSentence);
@@ -146,11 +145,11 @@ function popupErrorButtonsLogic(errorIndex) {
         $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
 
         //Checking if last popup error resolved
-        var errorContentChildren = $(".error-content").children().length;
+        var errorContentChildren = $("#error-content").children().length;
         if (errorContentChildren <= 0) {
-            $(".error-content").addClass('hidden');
-            $(".default-content").removeClass('hidden');
-            $(".floating-btn").attr('src', 'chrome-extension://'+chrome.runtime.id+'/images/28logo.png');
+            $("#error-content").addClass('hidden');
+            $("#default-content").removeClass('hidden');
+            $("#homepage-editor-logo").css('opacity', '100%');
         }
 
     });
@@ -159,22 +158,23 @@ function popupErrorButtonsLogic(errorIndex) {
     $("#rephrase-btn[error-index='"+ errorIndex + "']").on("click", function() {
 
         realErrorIndex = $(this).attr('error-index');
-        realCurEasyIndex = $(this).attr('easy-index');
         var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
         var rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']");
-        //Sends message to background.js
         
         //add loading animation
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-        chrome.runtime.sendMessage({message: originalSentence, easyIndex: realCurEasyIndex, rephrase: true, type: 'rephrase'}, function(response) {
-            
-           rephrasedSentence.text(response.rephrased[0]);
-           $("#speakeasy-error-items[error-index='"+ errorIndex + "']").removeClass('hidden');
-           $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").addClass('hidden');
 
-        });
+        var serverCall = contactServerRephrase(text, azureLink + 'newsentence')
+            .catch((error) => {
+                console.log(error);
+            })
+            .then(response => {
+                rephrasedSentence.text(response.rephrased[0]);
+                $("#speakeasy-error-items[error-index='"+ errorIndex + "']").removeClass('hidden');
+                $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").addClass('hidden');
+            });
 
 
     });
