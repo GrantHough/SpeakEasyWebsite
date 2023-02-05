@@ -3,7 +3,9 @@ var lastTrigger = 0; //index for keeping track of how many cycles of n milliseco
 var lastText = ""; //most recent text for the edtior box before new trigger
 var triggerThreshold = 5; //threshold for how many times the n millisecond loop must continue without any text change before a server call
 var loopTime = 4000; //milliseconds before loop recurses
- 
+var rejectedSet = new Set();
+var hasErrors = false;
+
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
     if ($(this).html().length > 420) {
@@ -47,8 +49,23 @@ $("#homepage-editor").on('message', function() {
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
                     if (originalSentences[i] != rephrasedSentences[i]) {
-                        $("#error-content").append(originalSentences[i]);
-                        $("#error-content").append(rephrasedSentences[i]);
+                        $.get("errorPopup.html", function (errorPopupData) {
+                            var newErrorPopupData = errorPopupData;
+                            newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
+                            newErrorPopupData = newErrorPopupData.replaceAll('EASYINDEXHERE', 0);
+                            newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentences[i]);
+                            newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentences[i]);
+    
+                            //Appending errorContent with functionality
+                            $("#error-content").append(newErrorPopupData);
+                            popupErrorButtonsLogic(0, errorIndex);
+                            errorIndex++;
+                            $("#error-content").toggleClass("hidden");
+    
+                            //There are now errors
+                            hasErrors = true;
+                        })
+                      
                     }  
                 }
             }
@@ -59,9 +76,17 @@ $("#homepage-editor").on('message', function() {
     }  
 });
 
+//logo opens up the popup
 $("#homepage-editor-logo").on("click", function() {
-    $("#error-popup").toggleClass('hidden');
+    $("#popup").toggleClass('hidden');
 });
+
+$("#close-btn").on("click", function() {
+    $("#popup").addClass('hidden');
+});
+
+
+
 
 async function sendHttpRequest(method, url, data) {
     var contact = fetch(url, {

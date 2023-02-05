@@ -29,7 +29,8 @@
                         <image src="images/whitelogonobackground.png" id="homepage-logo"></image>
                     </div>
                     <h1 id="homepage-subtitle">Using AI to help you say it better, say it easy.</h1>
-                    <div class="glass-button" id="homepage-learn-more-button" onClick="document.getElementById('homepage-section-one').scrollIntoView();">Learn More</div>
+                    <!-- <div class="glass-button" id="homepage-learn-more-button" onClick="document.getElementById('homepage-section-one').scrollIntoView();">Learn More</div> -->
+                    <a href="https://chrome.google.com/webstore/detail/speakeasy/bfdnmjblplbeeemfopkocdgfdhcdjpea" target="_blank" rel="noopener noreferrer" class="glass-button" id="homepage-download-button">Download Now</a>
                 </div>
                 <div id="homepage-sample-container">
                     <div class="homepage-mini-title">Give it a try:</div>  
@@ -39,37 +40,22 @@
                         </div>
                         <image src="images/whitelogonobackground.png" id="homepage-editor-logo"></image>
                                                 
-                        <div error-index="ERRORINDEXHERE" id="error-popup" class="hidden"> 
-                            <div error-index="ERRORINDEXHERE" id="speakeasy-error-items">
-                                <div id="speakeasy-error-sentences">
-                                    <div error-index="ERRORINDEXHERE" class="sentence-label" id="top-sentence-label">Original Sentence:</div>
-                                    <div error-index="ERRORINDEXHERE" class="original-sentence">ORIGNALSENTENCEHERE</div>
-                                    <div error-index="ERRORINDEXHERE" class="sentence-label">Rephrased Sentence:</div>
-                                    <div error-index="ERRORINDEXHERE" class="rephrased-sentence">REPHRASEDSENTENCEHERE</div>
+                        <div id="popup" class="hidden">
+                            <div id="popup-header-container">
+                                <div id="popup-header-title">SpeakEasy</div>
+                                <a id="close-btn">x</a>
+                            </div>
+                            <div id="speakeasy-main-content">
+                                <div id="default-content">
+                                    <div id="speakeasy-suggestion-text">Nothing stands out yet.</div>	
                                 </div>
-                                <button error-index="ERRORINDEXHERE" id="rephrase-btn" class="error-popup-button">Rephrase Again</button>
-                                <div class="accept-ignore-btns">
-                                    <button error-index="ERRORINDEXHERE" id="accept-btn" class="error-popup-button">Accept</button>
-                                    <button error-index="ERRORINDEXHERE" id="ignore-btn" class="error-popup-button">Ignore</button>
+                
+                                <div id="error-content" class="hidden">
+                
+                
                                 </div>
                             </div>
 
-                            <div error-index="ERRORINDEXHERE" id="speakeasy-error-loading" class="hidden">
-                                <div id="speakeasy-error-loading-text">Generating a new sentence...</div>
-                                <div class="speakeasy-loading-spinner"></div>
-                            </div>
-
-                            <div error-index="ERRORINDEXHERE" id="speakeasy-no-sentence-view" class="hidden"> 
-                                <div error-index="ERRORINDEXHERE" class="sentence-label" id="no-sentence-anymore">Woah!</div>
-                                <div error-index="ERRORINDEXHERE" id="sentence-not-there-text">SpeakEasy tried to apply the changes to this sentence but it's no longer present in your writing to be rephrased!</div>
-                                <button error-index="ERRORINDEXHERE" id="rephrase-everything-btn" class="error-popup-button">Rephrase Again</button>
-                                <!-- <div easy-index="EASYINDEXHERE" error-index="ERRORINDEXHERE" class="speakeasy-small-text">Keep in mind that sentences without ending punctuation are not rephrased!</div> -->
-                            </div>
-
-                            <div error-index="ERRORINDEXHERE" id="speakeasy-replace-loading" class="hidden">
-                                <div id="speakeasy-error-loading-text">Accepting the changes...</div>
-                                <div class="speakeasy-loading-spinner"></div>
-                            </div>
                         </div>
                     </div> 
                     
