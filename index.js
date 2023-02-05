@@ -4,7 +4,6 @@ var lastText = ""; //most recent text for the edtior box before new trigger
 var triggerThreshold = 5; //threshold for how many times the n millisecond loop must continue without any text change before a server call
 var loopTime = 4000; //milliseconds before loop recurses
 var rejectedSet = new Set();
-var hasErrors = false;
 var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
 
@@ -34,6 +33,7 @@ $("#homepage-editor").on('message', function() {
     text = $(this).html().replaceAll("   ", "")
     text = text.replaceAll("\n", "")
     var errorIndex = 1;
+    var hasErrors = false;
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
@@ -60,7 +60,7 @@ $("#homepage-editor").on('message', function() {
     
                             //Appending errorContent with functionality
                             $("#error-content").append(newErrorPopupData);
-                            popupErrorButtonsLogic(0, errorIndex);
+                            popupErrorButtonsLogic(errorIndex);
                             errorIndex++;
     
                             //There are now errors
