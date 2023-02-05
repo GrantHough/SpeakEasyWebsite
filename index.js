@@ -32,6 +32,7 @@ $("#homepage-editor").on('message', function() {
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
+
         //setting new value for lastText and resetting last trigger index
         lastText = text;
         lastTrigger = 0;
@@ -41,7 +42,15 @@ $("#homepage-editor").on('message', function() {
                 console.log(error);
             })
             .then(response => {
-                console.log(response);
+                originalSentences = response.original;
+                rephrasedSentences = response.rephrased;
+                //looping through them all to check if there are changes ie something was rephrased
+                for (var i = 0; i < originalSentences.length; i++) {
+                    if (originalSentences[i] != rephrasedSentences[i]) {
+                        $("#error-content").append(originalSentences[i]);
+                        $("#error-content").append(rephrasedSentences[i]);
+                    }  
+                }
             }
         );
 
