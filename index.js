@@ -98,7 +98,7 @@ function popupErrorButtonsLogic(errorIndex) {
         
         realErrorIndex = $(this).attr('error-index');
         
-        var editor = $("homepage-editor");
+        var editor = $("#homepage-editor");
         var editorText = editor.html();
         var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
         var rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']").text();
@@ -123,87 +123,10 @@ function popupErrorButtonsLogic(errorIndex) {
                 $("#homepage-editor-logo").css('opacity', '100%');
             }
 
-            //jank, make this a function later, but now ths is fine
+            //the logic for when the sentence isnt there was too complicated, this is fine for now
         } else {
-            //Getting popupError.html dynamically (popup for when a sentence is rephrased)
-            $.get(chrome.runtime.getURL('./popupError.html'), function(errorPopupData) {
-                $("#speakeasy-error-items[error-index='"+ realErrorIndex + "']").addClass("hidden");
-                $("#speakeasy-no-sentence-view[error-index='"+ realErrorIndex + "']").removeClass("hidden");
-                
-                $("#rephrase-everything-btn[error-index='"+ realErrorIndex + "']").on("click", function() {
-
-                    $("#speakeasy-no-sentence-view[error-index='"+ errorIndex + "']").addClass('hidden');
-                    $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
-                    //Sends message to background.js
-                    chrome.runtime.sendMessage({message: $(AmAl).text(), easyIndex: realCurEasyIndex, type: 'rephrase'}, function(response) {
-    
-                        var errorIndex = 1;
-                        realCurEasyIndex = response.easyIndex;
-                        defaultContent = ".default-content";
-                        errorContent = ".error-content";
-                        $(errorContent).html("");
-                        var hasErrors = false;
-    
-                        //get rid of old guys
-                        $(".error-content").empty();
-                        
-                        //Looping through the responses
-                        for (var i = 0; i < response.rephrased.length; i++) {
-    
-                            //Checking if at index i, original sentence is not equal to rephrased
-                            //In other words, if the sentence got rephrased and it isn't in the rejectedSet
-                            if (response.original[i] != response.rephrased[i] && !rejectedSet.has(response.original[i])) {
-                        
-                                //Replacing placeholders with actual values
-    
-                                var newErrorPopupData = errorPopupData;
-                                newErrorPopupData = newErrorPopupData.replaceAll('EASYINDEXHERE', realCurEasyIndex);
-                                newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
-                                newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', response.original[i]);
-                                newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', response.rephrased[i]);
-                                
-                                
-                                
-                                //Appending errorContent with functionality
-                                $(errorContent).append(newErrorPopupData); 
-                                gmailPopupErrorButtonsLogic(realCurEasyIndex, errorIndex);
-                                errorIndex++;
-    
-                                //There are now errors
-                                hasErrors = true;
-    
-                            }
-                        }
-    
-                        if (hasErrors) {
-                            
-                            $(errorContent).removeClass('hidden');
-                            $(defaultContent).addClass('hidden');
-                            $(".floating-btn").attr('src', 'chrome-extension://'+chrome.runtime.id+'/images/28logored.png');
-                            
-    
-                        } else {
-                            
-                            $(errorContent).addClass('hidden');
-                            $(defaultContent).removeClass('hidden');
-                            $(".floating-btn").attr('src', 'chrome-extension://'+chrome.runtime.id+'/images/28logo.png');
-    
-                        }
-                        
-                        $("#speakeasy-error-items[error-index='"+ realErrorIndex + "']").removeClass("hidden");
-                        $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").addClass('hidden');
-                    });
-                    
-                    //logic for rephrasing everyuthing with loading animation and all
-                });
-                
-            });
-            
-
-        
+            $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
         }
-
-
 
     });
 
