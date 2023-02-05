@@ -7,11 +7,23 @@ $("#homepage-editor").on("input keypress paste", function(event) {
     if ($(this).html().length > 420) {
         event.preventDefault();
         return false;
-    } else {
-        var serverCall = contactServerRephrase($(this).html(), azureLink + 'newsentence').then(response => {
-            console.log(response);
-        });
     }
+})
+
+//recursive function to trigger message to server every n milliseconds
+function timer(amount) {
+    $("#homepage-editor").trigger('message');
+    messageTimeout = setTimeout(() => {
+        timer(amount);
+        counter++;
+    }, amount);
+}
+
+timer(4000);
+
+//listener for message every n milliseconds
+$("#homepage-editor").on('message', function() {
+    console.log($(this).html());
 })
 
 async function sendHttpRequest(method, url, data) {
