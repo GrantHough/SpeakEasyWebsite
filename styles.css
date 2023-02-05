@@ -599,7 +599,7 @@ body {
     color: #f0f0f0;
 }
 
-.error-popup {
+#error-popup {
     padding: none;
 
     display: flex;
