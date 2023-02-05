@@ -47,7 +47,6 @@ $("#homepage-editor").on('message', function() {
                 console.log(error);
             })
             .then(response => {
-                console.log(response);
                 originalSentences = response.original;
                 rephrasedSentences = response.rephrased;
                 //looping through them all to check if there are changes ie something was rephrased
@@ -57,10 +56,11 @@ $("#homepage-editor").on('message', function() {
                             var newErrorPopupData = errorPopupData;
                             var originalSentence = originalSentences[i];
                             var rephrasedSentence = rephrasedSentences[i];
+                            console.log(originalSentence);
                             newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
                             newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
                             newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
-    
+                            console.log(newErrorPopupData)
                             //Appending errorContent with functionality
                             $("#error-content").append(newErrorPopupData);
                             popupErrorButtonsLogic(errorIndex);
@@ -72,13 +72,13 @@ $("#homepage-editor").on('message', function() {
                     }  
 
                     if (hasErrors) {
-                                
+                        console.log('has errors');
                         $("#error-content").removeClass('hidden');
                         $("#default-content").addClass('hidden');
                         $("#homepage-editor-logo").css('opacity', '50%');
 
                     } else {
-                        
+                        console.log('no has errors');
                         $("#error-content").addClass('hidden');
                         $("#default-content").removeClass('hidden');
                         $("#homepage-editor-logo").css('opacity', '87%');
