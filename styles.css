@@ -241,16 +241,6 @@ body {
     justify-content: center;
 }
 
-#homepage-section-two {
-    margin-top: 500px;
-    padding: 20px;
-    align-self: flex-end;
-    
-
-    color: #d8d8d8;
-    display: flex;
-    flex-direction: column;
-}
 
 #homepage-title-text-container {
 
@@ -278,7 +268,7 @@ body {
     width: 186px;
     margin: none;
     margin-left: 40px;
-    margin-top: -26px;
+    margin-top: -24px;
     filter: brightness(84%)
 }
 
@@ -430,22 +420,58 @@ body {
 #homepage-sample-container {
     margin-left: 72px;
     margin-top: -48px;
+    z-index: 1;
 }
 
-#homepage-editor {
+#homepage-editor-container {
     margin-top: 24px;
+    padding: 32px;
     width: 500px;
     height: 400px;
     background-color: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 15px;
-    padding: 38px;
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
+    
+}   
+#homepage-editor-container:focus {
+    outline: 1px solid rgba(255,255,255,0.2);
+}
+
+#homepage-editor {
+    margin: 0px;
+    width: 480px;
+    height: 400px;
+    padding: 0px;
     color: #dbdbdb;
     font-size: 24px;
+    overflow: hidden;
 }   
 
 #homepage-editor:focus {
-    outline: 1px solid rgba(255,255,255,0.2);
+    outline: none;
+}
+
+#homepage-editor-logo {
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+}
+
+#homepage-editor-logo:focus {
+    outline: none;
+}
+
+#homepage-section-two {
+    margin-top: 200px;
+    padding: 20px;
+    align-self: flex-end;
+    
+
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
 }

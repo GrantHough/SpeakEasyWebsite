@@ -1,6 +1,40 @@
-$(".main-header-pages-item").on("click", function() {
 
-    alert("Despite everything George Wilson faces, many argue that he was not actually a great man because of how he held his wife captive. “‘I’ve got my wife locked up in there,’ explained Wilson calmly” (136). However, this action was justified, since George knew that his wife had been cheating on him and he was worried that she would continue if he did not stop her. Throughout his life, all George does is respect his wife and care for her, however, she is actively cheating with George, resulting in George taking actions to protect her. In addition, Nick describes that while this is all going on, “the giant eyes of Doctor T. J. Eckleburg kept their vigil” (124). This signifies that there was always someone watching and that people will always get what is coming for them. This is a touch of foreshadowing, which informs readers that something bad will happen Myrtle. ")
+const azureLink = "https://speakeasy.azurewebsites.net/";
 
-});
+
+//prevent text in the editor box from being too long
+$("#homepage-editor").on("input keypress paste", function(event) {  
+    if ($(this).html().length > 420) {
+        event.preventDefault();
+        return false;
+    } else {
+        var serverCall = contactServerRephrase($(this).html(), azureLink + 'newsentence').then(response => {
+            console.log(response);
+        });
+    }
+})
+
+async function sendHttpRequest(method, url, data) {
+    var contact = fetch(url, {
+        method: method, 
+        body: JSON.stringify(data), 
+        mode: 'cors',
+        headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://granthough.github.io'} : {}
+     }).then(async (response) => {
+        return (await response.json());
+     }) 
+    return(await contact);
+    
+};
+
+async function contactServerRephrase(msg, url) {
+        var request = sendHttpRequest('POST', url, { 
+            text: msg,
+            threshold: 1, 
+        }).then(async (responseData) => {
+            var dog = await responseData;
+            return dog;
+        });
+        return await request;
+}
 
