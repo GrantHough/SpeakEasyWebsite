@@ -459,6 +459,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 32px;
+    opacity: 86%;
 }
 
 #homepage-editor-logo:focus {
