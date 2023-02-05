@@ -2,7 +2,7 @@ const azureLink = "https://speakeasy.azurewebsites.net/"; //base link for azure 
 var lastTrigger = 0; //index for keeping track of how many cycles of n milliseconds it has been since last trigger of server call
 var lastText = ""; //most recent text for the edtior box before new trigger
 var triggerThreshold = 5; //threshold for how many times the n millisecond loop must continue without any text change before a server call
-var loopMS = 4000; //milliseconds before loop recurses
+var loopTime = 4000; //milliseconds before loop recurses
  
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
@@ -22,7 +22,7 @@ function timer(amount) {
 }
 
 //starting recursive loop for n milliseconds
-timer(loopSeconds);
+timer(loopTime);
 
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
