@@ -9,7 +9,7 @@ var rephrasedSentencesSet = new Set();
 
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
-    if ($(this).html().length > 420) {
+    if ($(this).text().length > 420) {
         event.preventDefault();
         return false;
     }
@@ -30,10 +30,8 @@ timer(loopTime);
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
     //get rid of excessive spaces, might be erroneous, check this out later
-    text = $(this).html().replaceAll("   ", "")
-    text = text.replaceAll("\n", "")
-    var errorIndex = 1;
-    var hasErrors = false;
+    var text = $(this).html().replaceAll("   ", "")
+    var text = text.replaceAll("\n", "")
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
@@ -47,8 +45,10 @@ $("#homepage-editor").on('message', function() {
                 console.log(error);
             })
             .then(response => {
-                originalSentences = response.original;
-                rephrasedSentences = response.rephrased;
+                var errorIndex = 1;
+                var hasErrors = false;
+                var originalSentences = response.original;
+                var rephrasedSentences = response.rephrased;
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
                     if (originalSentences[i] != rephrasedSentences[i]) {
@@ -56,11 +56,9 @@ $("#homepage-editor").on('message', function() {
                             var newErrorPopupData = errorPopupData;
                             var originalSentence = originalSentences[i];
                             var rephrasedSentence = rephrasedSentences[i];
-                            console.log(originalSentence);
                             newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
                             newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
                             newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
-                            console.log(newErrorPopupData)
                             //Appending errorContent with functionality
                             $("#error-content").append(newErrorPopupData);
                             popupErrorButtonsLogic(errorIndex);
@@ -102,7 +100,7 @@ function popupErrorButtonsLogic(errorIndex) {
         realErrorIndex = $(this).attr('error-index');
         
         var editor = $("#homepage-editor");
-        var editorText = editor.html();
+        var editorText = editor.text();
         var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
         var rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']").text();
         
@@ -113,7 +111,7 @@ function popupErrorButtonsLogic(errorIndex) {
         //Replace original with rephrased
         if (editorText.includes(originalSentence)) {
             editorText = editorText.replace(originalSentence, rephrasedSentence);
-            $(AmAl).text(editorText);
+            $(editor).text(editorText);
 
             //Begone
             $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
