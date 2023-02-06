@@ -51,10 +51,12 @@ $("#homepage-editor").on('message', function() {
                 var rephrasedSentences = response.rephrased;
                 console.log(originalSentences.length);
                 console.log(originalSentences[0]);
+                console.log(rephrasedSentences[0]);
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
                     console.log(i);
                     console.log(originalSentences[i]);
+                    console.log(rephrasedSentences[i]);
                     if (originalSentences[i] != rephrasedSentences[i]) {
                         $.get("errorPopup.html", function (errorPopupData) {
                             var newErrorPopupData = errorPopupData;
