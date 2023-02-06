@@ -31,8 +31,8 @@ timer(loopTime);
 $("#homepage-editor").on('message', function() {
     $.get("errorPopup.html", function (errorPopupData) {
     //get rid of excessive spaces, might be erroneous, check this out later
-    var text = $(this).html().replaceAll("   ", "")
-    var text = text.replaceAll("\n", "")
+    var text = $("#homepage-editor").text().replaceAll("   ", "");
+    text = text.replaceAll("\n", "");
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
