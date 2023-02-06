@@ -46,6 +46,10 @@ $("#homepage-editor").on('message', function() {
                 console.log(error);
             })
             .then(response => {
+
+                //clear old things
+                $("#error-content").empty();
+
                 var errorIndex = 1;
                 var hasErrors = false;
                 var originalSentences = response.original;
