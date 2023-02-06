@@ -558,6 +558,7 @@ body {
     color: #f0f0f0;
     height: 205px;
     margin-top: 48px;
+    
 
     display: flex;
     flex-direction: column;
@@ -589,7 +590,7 @@ body {
 #error-content {
     padding-left: 12px;
     padding-right: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 0px;
     margin-top: 0px;
     
     text-shadow: 0.5px 0.5px 0.75px rgba(0,0,0,0.1);
