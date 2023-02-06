@@ -487,8 +487,8 @@ body {
 }
 
 #popup {
-    width: 300px;
-    height: 260px;
+    width: 320px;
+    height: 280px;
     position: fixed;
     bottom: 72px;
     right: 40px;
@@ -497,6 +497,7 @@ body {
     backdrop-filter: blur(10px);
     padding: 0px;
     border-radius: 16px;
+    overflow: hidden;
    
 
     display: flex;
@@ -522,7 +523,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     color: rgba(41, 41, 41);
     height: 55px;
-    width: 300px;
+    width: 320px;
     margin-top: 0px;
     position: fixed;
     top: 0px;
@@ -553,6 +554,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 205px;
+    margin-top: 62px;
 
     display: flex;
     flex-direction: column;
@@ -615,10 +617,7 @@ body {
 
 #speakeasy-error-sentences {
     margin-top: 0px;
-    width: 265px;
-}
-#speakeasy-error-sentences p {
-    font-weight: 250;
+    width: 300px;
 }
 
 #speakeasy-error-sentences .original-sentence {
@@ -715,3 +714,37 @@ body {
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 20%), 0 4px 6px 0 rgb(93 100 148 / 25%);
 }
 
+/* jank redo it later or not */
+.sentence-label {
+    font-weight: 600;
+    margin: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#rephrase-btn {
+    margin-top: 12px;
+}
+
+.error-popup-button {
+    display: inline-block;
+    padding: 5px 8px;
+    border: 0;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 550;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    margin-top: 4px;
+    
+    
+}
+  
+.error-popup-button:hover {
+    background-color: rgba(255,255,255,0.2);
+}
