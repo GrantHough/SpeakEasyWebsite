@@ -6,8 +6,9 @@ body {
      margin: 0;
      padding: 0;
      overscroll-behavior: none;
-     overflow-x: hidden;
+     overflow-x: none;
      min-height: 100vh;
+     max-height: 1000px;
 }
 
 
@@ -20,7 +21,8 @@ body {
     background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%);
     padding: 20px;
     min-height: 100vh;
-    overflow: hidden;
+    max-height: 1000px;
+    overflow: none;
     
 }
 
@@ -270,6 +272,9 @@ body {
 }
 
 .homepage-blob {
+    right:0;
+    bottom:0;
+    overflow: hidden;
     z-index: 0;
     position: absolute;
     width: 480px;
@@ -547,7 +552,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 205px;
-    margin-top: 58px;
+    margin-top: 55px;
 
     display: flex;
     flex-direction: column;
@@ -742,4 +747,14 @@ body {
   
 .error-popup-button:hover {
     background-color: rgba(255,255,255,0.2);
+}
+/* 
+#blobs-container {
+    position: relative;
+    height: 0px;
+    width: 0px;
+} */
+
+#speakeasy-error-items {
+    padding: 8px;
 }
