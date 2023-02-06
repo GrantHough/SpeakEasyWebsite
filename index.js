@@ -29,6 +29,7 @@ timer(loopTime);
 
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
+    $.get("errorPopup.html", function (errorPopupData) {
     //get rid of excessive spaces, might be erroneous, check this out later
     var text = $(this).html().replaceAll("   ", "")
     var text = text.replaceAll("\n", "")
@@ -51,37 +52,39 @@ $("#homepage-editor").on('message', function() {
                 var rephrasedSentences = response.rephrased;
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
+                    console.log(originalSentences[i] != rephrasedSentences[i]);
+                    console.log(!rejectedSet.has(originalSentences[i]));
+                    
                     if (originalSentences[i] != rephrasedSentences[i] && !rejectedSet.has(originalSentences[i])) {
-                        $.get("errorPopup.html", function (errorPopupData) {
-                            var newErrorPopupData = errorPopupData;
-                            var originalSentence = originalSentences[i];
-                            var rephrasedSentence = rephrasedSentences[i];
-                            newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
-                            newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
-                            newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
-                            //Appending errorContent with functionality
-                            $("#error-content").append(newErrorPopupData);
-                            popupErrorButtonsLogic(errorIndex);
-                            errorIndex++;
-    
-                            //There are now errors
-                            hasErrors = true;
-                        })
+
+                        var newErrorPopupData = errorPopupData;
+                        var originalSentence = originalSentences[i];
+                        var rephrasedSentence = rephrasedSentences[i];
+                        newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
+                        newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
+                        newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
+                        //Appending errorContent with functionality
+                        $("#error-content").append(newErrorPopupData);
+                        popupErrorButtonsLogic(errorIndex);
+                        errorIndex++;
+
+                        //There are now errors
+                        hasErrors = true;
+                        
                     }  
+                }
+                if (hasErrors) {
+                    console.log('has errors');
+                    $("#error-content").removeClass('hidden');
+                    $("#default-content").addClass('hidden');
+                    $("#homepage-editor-logo").css('opacity', '50%');
 
-                    if (hasErrors) {
-                        console.log('has errors');
-                        $("#error-content").removeClass('hidden');
-                        $("#default-content").addClass('hidden');
-                        $("#homepage-editor-logo").css('opacity', '50%');
+                } else {
+                    console.log('no has errors');
+                    $("#error-content").addClass('hidden');
+                    $("#default-content").removeClass('hidden');
+                    $("#homepage-editor-logo").css('opacity', '87%');
 
-                    } else {
-                        console.log('no has errors');
-                        $("#error-content").addClass('hidden');
-                        $("#default-content").removeClass('hidden');
-                        $("#homepage-editor-logo").css('opacity', '87%');
-
-                    }
                 }
             }
         );
@@ -89,6 +92,7 @@ $("#homepage-editor").on('message', function() {
     } else {
         lastTrigger++;
     }  
+    })
 });
 
 
