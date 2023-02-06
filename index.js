@@ -167,8 +167,7 @@ function popupErrorButtonsLogic(errorIndex) {
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-
-        var serverCall = contactServerRephrase(text, azureLink + 'newsentence')
+        var serverCall = contactServerRephrase(originalSentence, azureLink + 'newsentence')
             .catch((error) => {
                 console.log(error);
             })
