@@ -547,7 +547,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 205px;
-    margin-top: 62px;
+    margin-top: 58px;
 
     display: flex;
     flex-direction: column;
@@ -596,6 +596,8 @@ body {
 
 #error-popup {
     padding: none;
+    padding-left: 4px;
+    padding-right: 4px;
 
     display: flex;
     flex-direction: column;
