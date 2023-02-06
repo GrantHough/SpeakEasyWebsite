@@ -81,13 +81,13 @@ $("#homepage-editor").on('message', function() {
                     console.log('has errors');
                     $("#error-content").removeClass('hidden');
                     $("#default-content").addClass('hidden');
-                    $("#homepage-editor-logo").css('opacity', '50%');
+                    $("#homepage-editor-logo").attr('src', 'images/redlogonobackground.png');
 
                 } else {
                     console.log('no has errors');
                     $("#error-content").addClass('hidden');
                     $("#default-content").removeClass('hidden');
-                    $("#homepage-editor-logo").css('opacity', '87%');
+                    $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
 
                 }
             }
@@ -129,7 +129,7 @@ function popupErrorButtonsLogic(errorIndex) {
             if (errorContentChildren <= 0) {
                 $("#error-content").addClass('hidden');
                 $("#default-content").removeClass('hidden');
-                $("#homepage-editor-logo").css('opacity', '100%');
+                $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
             }
 
             //the logic for when the sentence isnt there was too complicated, this is fine for now
@@ -155,7 +155,7 @@ function popupErrorButtonsLogic(errorIndex) {
         if (errorContentChildren <= 0) {
             $("#error-content").addClass('hidden');
             $("#default-content").removeClass('hidden');
-            $("#homepage-editor-logo").css('opacity', '100%');
+            $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
         }
 
     });

@@ -6,7 +6,9 @@ body {
      margin: 0;
      padding: 0;
      overscroll-behavior: none;
-     overflow-x: none;
+     /* overflow-x: hidden; */
+     /* overflow: hidden;
+     position: relative; */
      min-height: 100vh;
      max-height: 1000px;
 }
@@ -22,7 +24,8 @@ body {
     padding: 20px;
     min-height: 100vh;
     max-height: 1000px;
-    overflow: none;
+    overflow: hidden;
+    position: relative;
     
 }
 
@@ -468,6 +471,8 @@ body {
 #homepage-editor-logo:focus {
     outline: none;
 }
+
+
 
 #homepage-section-two {
     margin-top: 200px;
