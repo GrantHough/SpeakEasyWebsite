@@ -81,7 +81,7 @@ $("#homepage-editor").on('message', function() {
                     console.log('has errors');
                     $("#error-content").removeClass('hidden');
                     $("#default-content").addClass('hidden');
-                    $("#homepage-editor-logo").attr('src', 'images/redlogonobackground.png');
+                    $("#homepage-editor-logo").attr('src', 'images/transparentrednobackground.png');
 
                 } else {
                     console.log('no has errors');
