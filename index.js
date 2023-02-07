@@ -56,8 +56,7 @@ $("#homepage-editor").on('message', function() {
                 var rephrasedSentences = response.rephrased;
                 //looping through them all to check if there are changes ie something was rephrased
                 for (var i = 0; i < originalSentences.length; i++) {
-                    console.log(originalSentences[i] != rephrasedSentences[i]);
-                    console.log(!rejectedSet.has(originalSentences[i]));
+             
                     
                     if (originalSentences[i] != rephrasedSentences[i] && !rejectedSet.has(originalSentences[i])) {
 
@@ -78,13 +77,12 @@ $("#homepage-editor").on('message', function() {
                     }  
                 }
                 if (hasErrors) {
-                    console.log('has errors');
                     $("#error-content").removeClass('hidden');
                     $("#default-content").addClass('hidden');
                     $("#homepage-editor-logo").attr('src', 'images/transparentrednobackground.png');
 
                 } else {
-                    console.log('no has errors');
+          
                     $("#error-content").addClass('hidden');
                     $("#default-content").removeClass('hidden');
                     $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
