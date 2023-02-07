@@ -557,7 +557,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 225px;
-    margin-top: 32px;
+    margin-top: 36px;
     
 
     display: flex; 
@@ -624,8 +624,8 @@ body {
 
 #speakeasy-error-sentences {
     margin-top: 0px;
-    padding-left: 9px;
-    padding-right: 9px;
+    padding-left: 16px;
+    padding-right: 16px;
     width: 300px;
 }
 
