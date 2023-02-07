@@ -133,6 +133,12 @@ function popupErrorButtonsLogic(errorIndex) {
             //the logic for when the sentence isnt there was too complicated, this is fine for now
         } else {
             $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
+            if (errorContentChildren <= 0) {
+                $("#error-content").addClass('hidden');
+                $("#default-content").removeClass('hidden');
+                $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
+            }
+
         }
 
     });
