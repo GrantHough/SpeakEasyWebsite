@@ -560,7 +560,7 @@ body {
     margin-top: 16px;
     
 
-    display: flex;
+    display: flex; 
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;  
@@ -580,7 +580,7 @@ body {
 }
 
 #speakeasy-suggestion-text {
-    margin-top: 60px;
+    margin-top: 72px;
     font-size: 16;
     font-weight: 250;
     flex-shrink: 0;
