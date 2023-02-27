@@ -786,6 +786,7 @@ body {
 }
 
 #thank-you-message {
+    color: #d8d8d8;
     font-size: 48px;
     font-weight: 600;
 
@@ -794,6 +795,14 @@ body {
 }
 
 #welcome-instructions {
-
+    color: #d8d8d8;
     text-align: center;
+}
+
+#welcome-text {
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
