@@ -152,7 +152,7 @@ $("#homepage-editor").on('message', function() {
          
         })
 
-        // var serverCall = contactServerRephrase(text, azureLink + 'rephrase')
+        // var serverCall = contactServer(text, azureLink + 'rephrase')
         //     .catch((error) => {
         //         console.log(error);
         //     })
@@ -286,7 +286,7 @@ function popupErrorButtonsLogic(errorIndex) {
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-        var serverCall = contactServerRephrase(originalSentence, azureLink + 'newsentence')
+        var serverCall = contactServer(originalSentence, azureLink + 'newsentence')
             .catch((error) => {
                 console.log(error);
             })
@@ -328,7 +328,7 @@ async function sendHttpRequest(method, url, data) {
     
 };
 
-async function contactServerRephrase(msg, url) {
+async function contactServer(msg, url) {
         var request = sendHttpRequest('POST', url, { 
             text: msg,
             threshold: 1, 
