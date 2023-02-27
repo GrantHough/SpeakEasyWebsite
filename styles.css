@@ -243,6 +243,15 @@ body {
     justify-content: center;
 }
 
+#welcome-page {
+    margin-top: 300px;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 #homepage-title-text-container {
 
