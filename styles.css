@@ -777,3 +777,23 @@ body {
     padding: 12px;
     margin-top: 0px;
 }
+
+#welcome-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#thank-you-message {
+    font-size: 48px;
+    font-weight: 600;
+
+    text-align: center;
+    align-self: center;
+}
+
+#welcome-instructions {
+
+    text-align: center;
+}
