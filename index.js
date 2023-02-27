@@ -110,7 +110,7 @@ $("#homepage-editor").on('message', function() {
 
             // to prevent array from being 0 cause of weird expansion shit
             setTimeout(() => {
-                modifiedResponse = ({original: curOriginalSentences, rephrased: curRephrasedSentences, easyIndex: request.easyIndex});
+                modifiedResponse = ({original: curOriginalSentences, rephrased: curRephrasedSentences});
                 
                //clear old things
                $("#error-content").empty();
