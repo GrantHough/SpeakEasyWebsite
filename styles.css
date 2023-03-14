@@ -1,5 +1,4 @@
 
-
 body {
      font-family: 'Plus Jakarta Sans', sans-serif;
      /* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
@@ -51,6 +50,7 @@ body {
     
 
 } */
+
 
 #main-header {
     position: fixed;
@@ -234,13 +234,26 @@ body {
     margin-left: 8px;
 }
 
-#homepage-section-one {
-    margin-top: 300px;
-    width: fit-content;
+@media (min-width: 1200px) {
+    #homepage-section-one {
+        margin-top: 300px;
+        width: fit-content;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    #homepage-section-one {
+        margin-top: 60px;
+        width: fit-content;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 #welcome-page {
