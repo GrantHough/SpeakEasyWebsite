@@ -713,7 +713,7 @@ body {
 }
 
 #popup {
-    width: 320px;
+    width: 340px;
     height: 280px;
     position: fixed;
     bottom: 72px;
@@ -749,7 +749,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     color: rgba(41, 41, 41);
     height: 55px;
-    width: 320px;
+    width: 340px;
     margin-top: 0px;
     position: fixed;
     top: 0px;
@@ -780,7 +780,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 225px;
-    width: 280px;
+    width: 300px;
     margin-top: 36px;
     padding: 16px;
     
