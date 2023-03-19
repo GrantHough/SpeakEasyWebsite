@@ -1,6 +1,11 @@
 
+body::-webkit-scrollbar {
+    display: none;
+}
 
 body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
      font-family: 'Plus Jakarta Sans', sans-serif;
      /* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
      margin: 0;
@@ -776,7 +781,7 @@ body {
 #speakeasy-main-content {
     color: #f0f0f0;
     height: 225px;
-    width: 292px;
+    width: 280px;
     margin-top: 36px;
     padding: 16px;
     
