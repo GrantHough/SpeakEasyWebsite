@@ -91,8 +91,10 @@ $("#homepage-editor").on('message', function() {
 
             if (newOriginalSentences.length > 0) {  
                 console.log('rephrasing sentences');
-            
-                var rephraseCall = contactServer(newOriginalSentences, azureLink + 'rephrase-test').then(response => {
+                console.log(newOriginalSentences);
+                var rephraseCall = contactServer(newOriginalSentences, azureLink + 'rephrase-test').catch(error => {
+                    console.log(error);
+                }).then(response => {
                     console.log(response)
                     //loop through response and check if the sentence is in a set
                     for (var i = 0; i < response.rephrased.length; i++) {
