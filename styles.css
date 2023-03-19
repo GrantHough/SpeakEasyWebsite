@@ -709,7 +709,7 @@ body {
     background-color: rgba(255,255,255,0.06);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
-    padding: 12px;
+    padding: 0px;
     border-radius: 16px;
     overflow: hidden;
    
@@ -769,6 +769,7 @@ body {
     color: #f0f0f0;
     height: 225px;
     margin-top: 36px;
+    padding: 16px;
     
 
     display: flex; 
