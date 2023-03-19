@@ -1,7 +1,7 @@
 const azureLink = "https://speakeasy.azurewebsites.net/"; //base link for azure paas server
 var lastTrigger = 0; //index for keeping track of how many cycles of n milliseconds it has been since last trigger of server call
 var lastText = ""; //most recent text for the edtior box before new trigger
-var triggerThreshold = 5; //threshold for how many times the n millisecond loop must continue without any text change before a server call
+var triggerThreshold = 6; //threshold for how many times the n millisecond loop must continue without any text change before a server call
 var loopTime = 5500; //milliseconds before loop recurses
 var rejectedSet = new Set();
 var originalSentencesSet = new Set();
@@ -33,6 +33,7 @@ timer(loopTime);
 
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
+
     $.get("errorPopup.html", function (errorPopupData) {
     //get rid of excessive spaces, might be erroneous, check this out later
     var text = $("#homepage-editor").text().replaceAll("   ", "");
@@ -40,15 +41,15 @@ $("#homepage-editor").on('message', function() {
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
-
+        console.log('running');
         //setting new value for lastText and resetting last trigger index
         lastText = text;
         lastTrigger = 0;
 
         var parseCall = contactServer(text, azureLink + 'parse-sentence').then(response => {
-              
+            
             var sentences = response.sentences;
-
+            console.log(sentences);
             //the OGs that alr been done
             var curOriginalSentences = [];
             var curRephrasedSentences = [];
@@ -89,9 +90,10 @@ $("#homepage-editor").on('message', function() {
             }
 
             if (newOriginalSentences.length > 0) {  
+                console.log('rephrasing sentences');
             
                 var rephraseCall = contactServer(newOriginalSentences, azureLink + 'rephrase-test').then(response => {
-                    
+                    console.log(response)
                     //loop through response and check if the sentence is in a set
                     for (var i = 0; i < response.rephrased.length; i++) {
                         
@@ -104,56 +106,62 @@ $("#homepage-editor").on('message', function() {
                         curRephrasedSentences.push(response.rephrased[i]);
 
                     }
+
+
+                    modifiedResponse = ({original: curOriginalSentences, rephrased: curRephrasedSentences});
+                    if (curRephrasedSentences == undefined || curRephrasedSentences.length == 0) {
+                        for (var u = 0; u < curOriginalSentences.length; u++) {
+                            curRephrasedSentences.add(curOriginalSentences[u]);
+                        }
+                    
+                    }
+
+                    //clear old things
+                    $("#error-content").empty();
+
+                    var errorIndex = 1;
+                    var hasErrors = false;
+
+                    //looping through them all to check if there are changes ie something was rephrased
+                    for (var i = 0; i < curOriginalSentences.length; i++) {
+                        
+                        if (curOriginalSentences[i] != curRephrasedSentences[i] && !rejectedSet.has(curOriginalSentences[i])) {
+
+                            var newErrorPopupData = errorPopupData;
+                            var originalSentence = curOriginalSentences[i];
+                            var rephrasedSentence = curRephrasedSentences[i];
+                            newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
+                            newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
+                            newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
+                            //Appending errorContent with functionality
+                            $("#error-content").append(newErrorPopupData);
+                            popupErrorButtonsLogic(errorIndex);
+                            errorIndex++;
+
+                            //There are now errors
+                            hasErrors = true;
+                            
+                        }  
+                    }
+                    if (hasErrors) {
+                        $("#error-content").removeClass('hidden');
+                        $("#default-content").addClass('hidden');
+                        $("#homepage-editor-logo").attr('src', 'images/transparentrednobackground.png');
+
+                    } else {
+                
+                        $("#error-content").addClass('hidden');
+                        $("#default-content").removeClass('hidden');
+                        $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
+
+                    }
                    
                 });
             } 
 
-            // to prevent array from being 0 cause of weird expansion shit
-            setTimeout(() => {
-                modifiedResponse = ({original: curOriginalSentences, rephrased: curRephrasedSentences});
-                console.log(curOriginalSentences);
-                console.log(curRephrasedSentences);
-               //clear old things
-               $("#error-content").empty();
-
-               var errorIndex = 1;
-               var hasErrors = false;
-
-               //looping through them all to check if there are changes ie something was rephrased
-               for (var i = 0; i < curOriginalSentences.length; i++) {
-                   
-                   if (curOriginalSentences[i] != curRephrasedSentences[i] && !rejectedSet.has(curOriginalSentences[i])) {
-
-                       var newErrorPopupData = errorPopupData;
-                       var originalSentence = curOriginalSentences[i];
-                       var rephrasedSentence = curRephrasedSentences[i];
-                       newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
-                       newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
-                       newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
-                       //Appending errorContent with functionality
-                       $("#error-content").append(newErrorPopupData);
-                       popupErrorButtonsLogic(errorIndex);
-                       errorIndex++;
-
-                       //There are now errors
-                       hasErrors = true;
-                       
-                   }  
-               }
-               if (hasErrors) {
-                   $("#error-content").removeClass('hidden');
-                   $("#default-content").addClass('hidden');
-                   $("#homepage-editor-logo").attr('src', 'images/transparentrednobackground.png');
-
-               } else {
-         
-                   $("#error-content").addClass('hidden');
-                   $("#default-content").removeClass('hidden');
-                   $("#homepage-editor-logo").attr('src', 'images/whitelogonobackground.png');
-
-               }
+    
                 
-            }, 1000);
+           
          
         })
 
