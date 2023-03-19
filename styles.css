@@ -1,11 +1,7 @@
 
-body::-webkit-scrollbar {
-    display: none;
-}
 
 body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+
      font-family: 'Plus Jakarta Sans', sans-serif;
      /* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
      margin: 0;
@@ -315,6 +311,9 @@ body {
 
 
 
+#speakeasy-main-content::-webkit-scrollbar {
+    display: none;
+}
 #homepage-catchphrase {
     margin-bottom: 20px;
 }
@@ -785,7 +784,8 @@ body {
     margin-top: 36px;
     padding: 16px;
     
-
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     display: flex; 
     flex-direction: column;
     overflow-x: hidden;
