@@ -180,6 +180,14 @@ body {
     color: #3a95d5;
 }
 
+@media (min-width: 1420px) {
+    #homepage-sample-container {
+        margin-left: calc(72px + 3vw);
+        margin-top: 0px;
+        z-index: 1;
+    }
+}
+
 
 @media (min-width: 1200px) {
     #homepage-title {
