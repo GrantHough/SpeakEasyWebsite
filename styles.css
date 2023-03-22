@@ -1,4 +1,6 @@
-
+html {
+    background: #000000;
+}
 
 body {
 
@@ -6,7 +8,7 @@ body {
      /* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
      margin: 0;
      padding: 0;
-     overscroll-behavior: none;
+     /* overscroll-behavior: none; */
      /* overflow-x: hidden; */
      /* overflow: hidden;
      position: relative; */
@@ -1052,4 +1054,16 @@ body {
     overflow: hidden;
     position: relative;
 
+}
+
+.background-blob {
+    background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%);
+    position: absolute;
+    height: 200px;
+    width: 100%;
+   
+}
+
+#top-background-blob {
+    transform: translateY(-200px);
 }
