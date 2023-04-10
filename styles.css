@@ -754,9 +754,10 @@ body {
     color: rgba(41, 41, 41);
     height: 55px;
     width: 340px;
-    margin-top: 0px;
+    margin-top: -225px;
     position: fixed;
     /* top: 0px; */
+
     display: flex;
     flex-direction: row;
 
