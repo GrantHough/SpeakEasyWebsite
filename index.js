@@ -11,6 +11,12 @@ var rephrasedSentencesSet = new Set();
 var originalSet = new Set();
 var rephrasedSet = new Set();
 
+
+//scroll to top at beginning 
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+}
+
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
     if ($(this).text().length > 420) {
