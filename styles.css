@@ -263,6 +263,8 @@ body {
     #homepage-logo {
         height: 17vw;
         width: 17vw;
+        min-width: 40px;
+        min-height: 40px;
         margin: none;
         margin-left: 3vw;
         margin-top: -1vw;
