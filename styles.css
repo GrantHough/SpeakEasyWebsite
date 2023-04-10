@@ -59,14 +59,14 @@ body {
 
     #main-header {
         position: fixed;
-        z-index: 2;
+        z-index: 3;
         width:100%; 
         height: 84px;
-        background-color: rgba(255,255,255,0.06);
+        background-color: rgba(255,255,255,0.09);
         border-bottom: 1px solid rgba(255,255,255,0.1);
         width: 100%;
         padding: 10px;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
         box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
         
     
@@ -114,14 +114,14 @@ body {
 
     #main-header {
         position: fixed;
-        z-index: 2;
+        z-index: 3;
         width:100%; 
         height: 56px;
-        background-color: rgba(255,255,255,0.06);
+        background-color: rgba(255,255,255,0.09);
         border-bottom: 1px solid rgba(255,255,255,0.1);
         width: 100%;
         padding: 10px;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
         box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
         
     
@@ -625,6 +625,7 @@ body {
 
 @media (min-width: 1540px) {
     #homepage-editor-container {
+        z-index: 1;
         margin-top: 24px;
         padding: 32px;
         width: 500px;
@@ -650,6 +651,7 @@ body {
 
 @media (max-width: 1540px) {
     #homepage-editor-container {
+        z-index: 1;
         align-self: center;
         margin-top: 24px;
         padding: 32px;
@@ -717,14 +719,15 @@ body {
 }
 
 #popup {
+    z-index: 2;
     width: 340px;
     height: 280px;
     position: fixed;
     bottom: 72px;
     right: 40px;
-    background-color: rgba(255,255,255,0.06);
+    background-color: rgba(255,255,255,0.09);
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
     padding: 0px;
     border-radius: 21px;
     overflow: hidden;
