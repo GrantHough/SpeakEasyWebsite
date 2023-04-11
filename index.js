@@ -340,8 +340,8 @@ async function sendHttpRequest(method, url, data) {
     var contact = fetch(url, {
         method: method, 
         body: JSON.stringify(data), 
-        // mode: 'cors',
-        // headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://speakeasy.ooo'} : {}
+        mode: 'cors',
+        headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://speakeasy.ooo'} : {}
      }).then(async (response) => {
         return (await response.json());
      }) 
