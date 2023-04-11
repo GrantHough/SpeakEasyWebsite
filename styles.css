@@ -26,7 +26,7 @@ body {
     background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%);
     padding: 20px;
     min-height: 100vh;
-    max-height: 1200px;
+    max-height: 3000px;
     overflow: hidden;
     position: relative;
     
@@ -461,12 +461,6 @@ body {
 }
 
 
-.individual-description {
-    font-size: 28px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-left: 40px;
-}
 
 
 .homepage-blob {
@@ -703,16 +697,7 @@ body {
 
 
 
-#homepage-section-two {
-    margin-top: 200px;
-    padding: 20px;
-    align-self: flex-end;
-    
 
-    color: #d8d8d8;
-    display: flex;
-    flex-direction: column;
-}
 
 #error-popup.hidden {
     display: none;
@@ -1073,3 +1058,85 @@ body {
 #top-background-blob {
     transform: translateY(-200px);
 }
+
+
+@media (min-width: 1540px) {
+    #homepage-section-two {
+        margin-top: 200px;
+        padding: 40px;
+        /* align-self: flex-end; */
+        
+    
+        color: #d8d8d8;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .blurb {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    #blurb-two {
+        align-self: flex-end;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .blurb-spacer {
+        width: 840px;
+    }
+
+    .blurb-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .individual-description {
+        font-size: 28px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 1540px) {
+    #homepage-section-two {
+        margin-top: 100px;
+        padding: 40px;
+        /* align-self: flex-end; */
+        
+    
+        color: #d8d8d8;
+        display: flex;
+        flex-direction: column;
+    }
+    .blurb {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+
+    .blurb-spacer {
+        width: 0px;
+    }
+
+    .blurb-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .individual-description {
+        font-size: calc(19px + 0.7vw);
+        font-weight: 600;
+        text-decoration: none;
+        margin-left: 40px;
+    }
+}
+
+
+
