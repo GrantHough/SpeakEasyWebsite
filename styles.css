@@ -1160,3 +1160,18 @@ body {
     text-decoration: underline;
     color: inherit;
 }
+
+#founder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#creator-text {
+    align-self: center;
+    color: #d8d8d8;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 20px;
+}
