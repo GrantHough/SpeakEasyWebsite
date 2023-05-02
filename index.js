@@ -47,7 +47,6 @@ $("#homepage-editor").on('message', function() {
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
     if (text != lastText || lastTrigger > triggerThreshold) {
-        console.log('running');
         //setting new value for lastText and resetting last trigger index
         lastText = text;
         lastTrigger = 0;
@@ -55,7 +54,6 @@ $("#homepage-editor").on('message', function() {
         var parseCall = contactServer(text, herokuLink + 'parse-sentence').then(response => {
             
             var sentences = response.sentences;
-            console.log(sentences);
             //the OGs that alr been done
             var curOriginalSentences = [];
             var curRephrasedSentences = [];
@@ -96,8 +94,6 @@ $("#homepage-editor").on('message', function() {
             }
 
             if (newOriginalSentences.length > 0) {  
-                console.log('rephrasing sentences');
-                console.log(newOriginalSentences);
                 var rephraseCall = contactServer(newOriginalSentences, herokuLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
