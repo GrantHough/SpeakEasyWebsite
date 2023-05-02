@@ -710,7 +710,7 @@ body {
     position: fixed;
     bottom: 72px;
     right: 40px;
-    background-color: rgba(255,255,255,0.09);
+    background-color: #e3e9ee;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(14px);
     padding: 0px;
@@ -728,8 +728,8 @@ body {
 }
 
 #popup-header-container {
-    color: #f0f0f0;
-    background-color: rgba(255,255,255,0.06);
+    color: #111111;
+    background-color: #e3e9ee;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
     flex-shrink: 0;
@@ -739,7 +739,6 @@ body {
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-    color: rgba(41, 41, 41);
     height: 55px;
     width: 340px;
     margin-top: -225px;
@@ -752,7 +751,7 @@ body {
 }
 
 #close-btn {
-    color: #f0f0f0;
+    color: #111111;
     cursor: pointer;
     transition: box-shadow .3s;
     position: absolute;
@@ -771,7 +770,7 @@ body {
 }
 
 #speakeasy-main-content {
-    color: #f0f0f0;
+    color: #111111;
     height: 225px;
     width: 300px;
     margin-top: 36px;
@@ -824,7 +823,7 @@ body {
 #popup-header-title {
     font-size: 18px;
     font-weight: 600;
-    color: #f0f0f0;
+    color: #111111;
 }
 
 #error-popup {
