@@ -337,7 +337,7 @@ async function sendHttpRequest(method, url, data) {
         method: method, 
         body: JSON.stringify(data), 
         mode: 'cors',
-        headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://speakeasy.ooo'} : {}
+        headers: data ? {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'} : {}
      }).then(async (response) => {
         return (await response.json());
      }) 
