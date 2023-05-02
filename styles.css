@@ -710,7 +710,7 @@ body {
     position: fixed;
     bottom: 72px;
     right: 40px;
-    background-color: #e3e9ee;
+    background-color: #dbe0e5;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(14px);
     padding: 0px;
@@ -729,7 +729,7 @@ body {
 
 #popup-header-container {
     color: #111111;
-    background-color: #e3e9ee;
+    background-color: #dbe0e5;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
     flex-shrink: 0;
