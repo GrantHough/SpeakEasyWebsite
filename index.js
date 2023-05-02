@@ -6,6 +6,8 @@ var loopTime = 5500; //milliseconds before loop recurses
 var rejectedSet = new Set();
 var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
+const herokuLink = "https://speakeasyherokuserver.herokuapp.com/"
+
 
 
 var originalSet = new Set();
@@ -52,7 +54,7 @@ $("#homepage-editor").on('message', function() {
         lastText = text;
         lastTrigger = 0;
 
-        var parseCall = contactServer(text, azureLink + 'parse-sentence').then(response => {
+        var parseCall = contactServer(text, herokuLink + 'parse-sentence').then(response => {
             
             var sentences = response.sentences;
             console.log(sentences);
@@ -98,7 +100,7 @@ $("#homepage-editor").on('message', function() {
             if (newOriginalSentences.length > 0) {  
                 console.log('rephrasing sentences');
                 console.log(newOriginalSentences);
-                var rephraseCall = contactServer(newOriginalSentences, azureLink + 'rephrase-test').catch(error => {
+                var rephraseCall = contactServer(newOriginalSentences, herokuLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
                     console.log(response)
@@ -173,7 +175,7 @@ $("#homepage-editor").on('message', function() {
          
         })
 
-        // var serverCall = contactServer(text, azureLink + 'rephrase')
+        // var serverCall = contactServer(text, herokuLink + 'rephrase')
         //     .catch((error) => {
         //         console.log(error);
         //     })
@@ -307,7 +309,7 @@ function popupErrorButtonsLogic(errorIndex) {
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-        var serverCall = contactServer(originalSentence, azureLink + 'newsentence')
+        var serverCall = contactServer(originalSentence, herokuLink + 'newsentence')
             .catch((error) => {
                 console.log(error);
             })
