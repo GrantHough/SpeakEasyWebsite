@@ -8,8 +8,6 @@ var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
 const herokuLink = "https://speakeasyherokuserver.herokuapp.com/"
 
-
-
 var originalSet = new Set();
 var rephrasedSet = new Set();
 
