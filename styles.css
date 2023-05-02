@@ -1113,7 +1113,6 @@ body {
     }
 
     /* looks like ass but its fine */
-
 }
 
 @media (max-width: 1540px) {
@@ -1152,8 +1151,6 @@ body {
         margin-left: 40px;
     }
     
-
-
 }
 
 .link {
@@ -1174,4 +1171,11 @@ body {
     font-weight: 600;
     text-decoration: none;
     margin-top: 20px;
+}
+
+.individual-description {
+    color: #d8d8d8;
+}
+.individual-description a {
+    color: #d8d8d8;
 }
