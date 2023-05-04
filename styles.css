@@ -961,7 +961,7 @@ body {
     border: 0;
     text-decoration: none;
     border-radius: 8px;
-    background-color: #dbe0e5;
+    background-color: #6d6d6d;
     border: 1px solid rgba(255,255,255,0.1);
     /* backdrop-filter: blur(30px); */
     color: rgba(0,0,0,0.9);
@@ -973,10 +973,10 @@ body {
     
     
 }
-  
+/*   
 .error-popup-button:hover {
     background-color: rgba(255,255,255,0.2);
-}
+} */
 /* 
 #blobs-container {
     position: relative;
