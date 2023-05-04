@@ -963,7 +963,7 @@ body {
     border-radius: 8px;
     background-color: #dbe0e5;
     border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(30px);
+    /* backdrop-filter: blur(30px); */
     color: rgba(0,0,0,0.9);
     font-size: 14px;
     font-weight: 550;
