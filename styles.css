@@ -224,7 +224,6 @@ body {
         
     }
 
-
     #homepage-subtitle {
         font-size: 40px;
         font-weight: 650;
@@ -239,6 +238,15 @@ body {
     .homepage-mini-title {
         font-size: 40px;
         font-weight: 650;
+        text-decoration: none;
+        color: #d8d8d8;
+    }
+
+    .homepage-description {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 12px;
+        margin-right: 24px;
         text-decoration: none;
         color: #d8d8d8;
     }
@@ -304,6 +312,15 @@ body {
         text-decoration: none;
         color: #d8d8d8;
     }
+
+    .homepage-description {
+        font-size:calc(10px + 2vw);
+        font-weight: 400;
+        margin-top: 12px;
+        text-decoration: none;
+        color: #d8d8d8;
+    }
+
     #homepage-sample-container {
         margin-left: 4px;
         margin-top: 0px;
