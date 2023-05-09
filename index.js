@@ -73,7 +73,7 @@ $("#homepage-editor").on('message', function() {
                 for (var j = 0; j < originalSetTempArray.length; j++) {
                     //if the sentnece is not in the set
            
-                    if (sentences[i] == originalSetTempArray[j] || sentences[i] == originalSetTempArray[j]) {
+                    if (sentences[i] == originalSetTempArray[j] || sentences[i] == rephrasedSetTempArray[j]) {
                         //rephrased vers already exsists
                         inSet = true;
                         curOriginalSentences.push(originalSetTempArray[j]);
@@ -103,7 +103,7 @@ $("#homepage-editor").on('message', function() {
                         
                         originalSet.add(response.original[i]);
                         //temp solution to not rephrase GPT output sentences:
-                        originalSet.add(response.rephrased[i]);
+                        // originalSet.add(response.rephrased[i]);
                         rephrasedSet.add(response.rephrased[i]);
                         
                         curOriginalSentences.push(response.original[i]);
