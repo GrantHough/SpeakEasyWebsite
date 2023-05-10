@@ -73,7 +73,7 @@ $("#homepage-editor").on('message', function() {
                 for (var j = 0; j < originalSetTempArray.length; j++) {
                     //if the sentnece is not in the set
            
-                    if (sentences[i] == originalSetTempArray[j] || sentences[i] == rephrasedSetTempArray[j]) {
+                    if (sentences[i] == originalSetTempArray[j]) {
                         //rephrased vers already exsists
                         inSet = true;
                         curOriginalSentences.push(originalSetTempArray[j]);
@@ -81,6 +81,8 @@ $("#homepage-editor").on('message', function() {
                     
                         break;
                         
+                    } else if (sentences[i] == rephrasedSetTempArray[j]) {
+                        break;
                     } else {
                         inSet = false;
                     }
@@ -97,7 +99,6 @@ $("#homepage-editor").on('message', function() {
                 var rephraseCall = contactServer(newOriginalSentences, herokuLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
-                    console.log(response)
                     //loop through response and check if the sentence is in a set
                     for (var i = 0; i < response.rephrased.length; i++) {
                         
@@ -109,15 +110,6 @@ $("#homepage-editor").on('message', function() {
                         curOriginalSentences.push(response.original[i]);
                         curRephrasedSentences.push(response.rephrased[i]);
 
-                    }
-
-
-                    modifiedResponse = ({original: curOriginalSentences, rephrased: curRephrasedSentences});
-                    if (curRephrasedSentences == undefined || curRephrasedSentences.length == 0) {
-                        for (var u = 0; u < curOriginalSentences.length; u++) {
-                            curRephrasedSentences.add(curOriginalSentences[u]);
-                        }
-                    
                     }
 
                     //clear old things
