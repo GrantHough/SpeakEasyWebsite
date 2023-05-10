@@ -116,6 +116,7 @@ $("#homepage-editor").on('message', function() {
                     $("#error-content").empty();
 
                     var errorIndex = 1;
+                    $("#error-content").html("");
                     var hasErrors = false;
 
                     //looping through them all to check if there are changes ie something was rephrased
