@@ -99,6 +99,7 @@ $("#homepage-editor").on('message', function() {
                 var rephraseCall = contactServer(newOriginalSentences, herokuLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
+                    console.log(response);
                     //loop through response and check if the sentence is in a set
                     for (var i = 0; i < response.rephrased.length; i++) {
                         
