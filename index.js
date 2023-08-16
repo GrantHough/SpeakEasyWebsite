@@ -6,7 +6,7 @@ var loopTime = 5500; //milliseconds before loop recurses
 var rejectedSet = new Set();
 var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
-const herokuLink = "https://speakeasyherokuserver.herokuapp.com/"
+const serverLink = ""https://speakeasyserver-vkd5vb5lca-uc.a.run.app/""
 
 var originalSet = new Set();
 var rephrasedSet = new Set();
@@ -51,7 +51,7 @@ $("#homepage-editor").on('message', function() {
         lastText = text;
         lastTrigger = 0;
 
-        var parseCall = contactServer(text, herokuLink + 'parse-sentence').then(response => {
+        var parseCall = contactServer(text, serverLink + 'parse-sentence').then(response => {
             
             var sentences = response.sentences;
             //the OGs that alr been done
@@ -96,7 +96,7 @@ $("#homepage-editor").on('message', function() {
             }
 
             if (newOriginalSentences.length > 0) {  
-                var rephraseCall = contactServer(newOriginalSentences, herokuLink + 'rephrase-test').catch(error => {
+                var rephraseCall = contactServer(newOriginalSentences, serverLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
                     console.log(response);
@@ -163,7 +163,7 @@ $("#homepage-editor").on('message', function() {
          
         })
 
-        // var serverCall = contactServer(text, herokuLink + 'rephrase')
+        // var serverCall = contactServer(text, serverLink + 'rephrase')
         //     .catch((error) => {
         //         console.log(error);
         //     })
@@ -297,7 +297,7 @@ function popupErrorButtonsLogic(errorIndex) {
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-        var serverCall = contactServer(originalSentence, herokuLink + 'newsentence')
+        var serverCall = contactServer(originalSentence, serverLink + 'newsentence')
             .catch((error) => {
                 console.log(error);
             })
