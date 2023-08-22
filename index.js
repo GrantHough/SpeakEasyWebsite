@@ -6,7 +6,7 @@ var loopTime = 5500; //milliseconds before loop recurses
 var rejectedSet = new Set();
 var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
-const serverLink = ""https://speakeasyserver-vkd5vb5lca-uc.a.run.app/""
+const serverLink = "https://speakeasyserver-vkd5vb5lca-uc.a.run.app/"
 
 var originalSet = new Set();
 var rephrasedSet = new Set();
