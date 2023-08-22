@@ -434,9 +434,14 @@ body {
     margin-left: 8px;
 }
 
-#homepage-download-button {
+#homepage-try-extension-button {
     margin-left: 8px;
 }
+
+#homepage-bot-button {
+    margin-left: 16px;
+}
+
 
 @media (min-width: 1540px) {
     #homepage-section-one {

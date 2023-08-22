@@ -1,15 +1,14 @@
-const azureLink = "https://speakeasy.azurewebsites.net/"; //base link for azure paas server
-var lastTrigger = 0; //index for keeping track of how many cycles of n milliseconds it has been since last trigger of server call
-var lastText = ""; //most recent text for the edtior box before new trigger
-var triggerThreshold = 6; //threshold for how many times the n millisecond loop must continue without any text change before a server call
-var loopTime = 5500; //milliseconds before loop recurses
-var rejectedSet = new Set();
-var originalSentencesSet = new Set();
-var rephrasedSentencesSet = new Set();
+let lastTrigger = 0; //index for keeping track of how many cycles of n milliseconds it has been since last trigger of server call
+let lastText = ""; //most recent text for the edtior box before new trigger
+let triggerThreshold = 6; //threshold for how many times the n millisecond loop must continue without any text change before a server call
+let loopTime = 5500; //milliseconds before loop recurses
+let rejectedSet = new Set();
+let originalSentencesSet = new Set();
+let rephrasedSentencesSet = new Set();
 const serverLink = "https://speakeasyserver-vkd5vb5lca-uc.a.run.app/"
 
-var originalSet = new Set();
-var rephrasedSet = new Set();
+let originalSet = new Set();
+let rephrasedSet = new Set();
 
 
 //scroll to top at beginning 
@@ -42,7 +41,7 @@ $("#homepage-editor").on('message', function() {
 
     $.get("errorPopup.html", function (errorPopupData) {
     //get rid of excessive spaces, might be erroneous, check this out later
-    var text = $("#homepage-editor").text().replaceAll("   ", "");
+    let text = $("#homepage-editor").text().replaceAll("   ", "");
     text = text.replaceAll("\n", "");
     
     // if the text as changed or it has been triggerThreshold * n milliseconds
@@ -51,26 +50,26 @@ $("#homepage-editor").on('message', function() {
         lastText = text;
         lastTrigger = 0;
 
-        var parseCall = contactServer(text, serverLink + 'parse-sentence').then(response => {
+        let parseCall = contactServer(text, serverLink + 'parse-sentence').then(response => {
             
-            var sentences = response.sentences;
+            let sentences = response.sentences;
             //the OGs that alr been done
-            var curOriginalSentences = [];
-            var curRephrasedSentences = [];
+            let curOriginalSentences = [];
+            let curRephrasedSentences = [];
 
             //the ones that havent been done yet, need to be rephrased
             newOriginalSentences = [];
-            //new var so i can loop through it
-            var originalSetTempArray = Array.from(originalSet);
-            var rephrasedSetTempArray = Array.from(rephrasedSet);
+            //new let so i can loop through it
+            let originalSetTempArray = Array.from(originalSet);
+            let rephrasedSetTempArray = Array.from(rephrasedSet);
             //loop through response
-            for (var i = 0; i < sentences.length; i++) {
+            for (let i = 0; i < sentences.length; i++) {
              
                 // is sentence[i] in the set?
-                var inSet = false;
+                let inSet = false;
         
                 //loop through set
-                for (var j = 0; j < originalSetTempArray.length; j++) {
+                for (let j = 0; j < originalSetTempArray.length; j++) {
                     //if the sentnece is not in the set
            
                     if (sentences[i] == originalSetTempArray[j]) {
@@ -96,12 +95,12 @@ $("#homepage-editor").on('message', function() {
             }
 
             if (newOriginalSentences.length > 0) {  
-                var rephraseCall = contactServer(newOriginalSentences, serverLink + 'rephrase-test').catch(error => {
+                let rephraseCall = contactServer(newOriginalSentences, serverLink + 'rephrase-test').catch(error => {
                     console.log(error);
                 }).then(response => {
                     console.log(response);
                     //loop through response and check if the sentence is in a set
-                    for (var i = 0; i < response.rephrased.length; i++) {
+                    for (let i = 0; i < response.rephrased.length; i++) {
                         
                         originalSet.add(response.original[i]);
                         //temp solution to not rephrase GPT output sentences:
@@ -116,18 +115,18 @@ $("#homepage-editor").on('message', function() {
                     //clear old things
                     $("#error-content").empty();
 
-                    var errorIndex = 1;
+                    let errorIndex = 1;
                     $("#error-content").html("");
-                    var hasErrors = false;
+                    let hasErrors = false;
 
                     //looping through them all to check if there are changes ie something was rephrased
-                    for (var i = 0; i < curOriginalSentences.length; i++) {
+                    for (let i = 0; i < curOriginalSentences.length; i++) {
                         
                         if (curOriginalSentences[i] != curRephrasedSentences[i] && !rejectedSet.has(curOriginalSentences[i])) {
 
-                            var newErrorPopupData = errorPopupData;
-                            var originalSentence = curOriginalSentences[i];
-                            var rephrasedSentence = curRephrasedSentences[i];
+                            let newErrorPopupData = errorPopupData;
+                            let originalSentence = curOriginalSentences[i];
+                            let rephrasedSentence = curRephrasedSentences[i];
                             newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
                             newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
                             newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
@@ -163,7 +162,7 @@ $("#homepage-editor").on('message', function() {
          
         })
 
-        // var serverCall = contactServer(text, serverLink + 'rephrase')
+        // let serverCall = contactServer(text, serverLink + 'rephrase')
         //     .catch((error) => {
         //         console.log(error);
         //     })
@@ -172,19 +171,19 @@ $("#homepage-editor").on('message', function() {
         //         //clear old things
         //         $("#error-content").empty();
 
-        //         var errorIndex = 1;
-        //         var hasErrors = false;
-        //         var originalSentences = response.original;
-        //         var rephrasedSentences = response.rephrased;
+        //         let errorIndex = 1;
+        //         let hasErrors = false;
+        //         let originalSentences = response.original;
+        //         let rephrasedSentences = response.rephrased;
         //         //looping through them all to check if there are changes ie something was rephrased
-        //         for (var i = 0; i < originalSentences.length; i++) {
+        //         for (let i = 0; i < originalSentences.length; i++) {
              
                     
         //             if (originalSentences[i] != rephrasedSentences[i] && !rejectedSet.has(originalSentences[i])) {
 
-        //                 var newErrorPopupData = errorPopupData;
-        //                 var originalSentence = originalSentences[i];
-        //                 var rephrasedSentence = rephrasedSentences[i];
+        //                 let newErrorPopupData = errorPopupData;
+        //                 let originalSentence = originalSentences[i];
+        //                 let rephrasedSentence = rephrasedSentences[i];
         //                 newErrorPopupData = newErrorPopupData.replaceAll('ERRORINDEXHERE', errorIndex);
         //                 newErrorPopupData = newErrorPopupData.replaceAll('ORIGNALSENTENCEHERE', originalSentence);
         //                 newErrorPopupData = newErrorPopupData.replaceAll('REPHRASEDSENTENCEHERE', rephrasedSentence);
@@ -227,10 +226,10 @@ function popupErrorButtonsLogic(errorIndex) {
         
         realErrorIndex = $(this).attr('error-index');
         
-        var editor = $("#homepage-editor");
-        var editorText = editor.text();
-        var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
-        var rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']").text();
+        let editor = $("#homepage-editor");
+        let editorText = editor.text();
+        let originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
+        let rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']").text();
         
         //add sentences to set
         originalSentencesSet.add(originalSentence);
@@ -245,7 +244,7 @@ function popupErrorButtonsLogic(errorIndex) {
             $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
 
             //Checking if last popup error resolved
-            var errorContentChildren = $("#error-content").children().length;
+            let errorContentChildren = $("#error-content").children().length;
             if (errorContentChildren <= 0) {
                 $("#error-content").addClass('hidden');
                 $("#default-content").removeClass('hidden');
@@ -270,14 +269,14 @@ function popupErrorButtonsLogic(errorIndex) {
 
         realErrorIndex = $(this).attr('error-index');
         //Add to rejected list
-        var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
+        let originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
         rejectedSet.add(originalSentence);
 
         //Begone
         $("#error-popup[error-index='"+ realErrorIndex + "']").remove();
 
         //Checking if last popup error resolved
-        var errorContentChildren = $("#error-content").children().length;
+        let errorContentChildren = $("#error-content").children().length;
         if (errorContentChildren <= 0) {
             $("#error-content").addClass('hidden');
             $("#default-content").removeClass('hidden');
@@ -290,14 +289,14 @@ function popupErrorButtonsLogic(errorIndex) {
     $("#rephrase-btn[error-index='"+ errorIndex + "']").on("click", function() {
 
         realErrorIndex = $(this).attr('error-index');
-        var originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
-        var rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']");
+        let originalSentence = $(".original-sentence[error-index='"+ realErrorIndex + "']").text();
+        let rephrasedSentence = $(".rephrased-sentence[error-index='"+ realErrorIndex + "']");
         
         //add loading animation
         $("#speakeasy-error-items[error-index='"+ errorIndex + "']").addClass('hidden');
         $("#speakeasy-error-loading[error-index='"+ errorIndex + "']").removeClass('hidden');
 
-        var serverCall = contactServer(originalSentence, serverLink + 'newsentence')
+        let serverCall = contactServer(originalSentence, serverLink + 'newsentence')
             .catch((error) => {
                 console.log(error);
             })
@@ -327,7 +326,7 @@ $("#close-btn").on("click", function() {
 
 
 async function sendHttpRequest(method, url, data) {
-    var contact = fetch(url, {
+    let contact = fetch(url, {
         method: method, 
         body: JSON.stringify(data), 
         mode: 'cors',
@@ -340,11 +339,11 @@ async function sendHttpRequest(method, url, data) {
 };
 
 async function contactServer(msg, url) {
-        var request = sendHttpRequest('POST', url, { 
+        let request = sendHttpRequest('POST', url, { 
             text: msg,
             threshold: 1, 
         }).then(async (responseData) => {
-            var dog = await responseData;
+            let dog = await responseData;
             return dog;
         });
         return await request;
