@@ -7,7 +7,8 @@ var rejectedSet = new Set();
 var originalSentencesSet = new Set();
 var rephrasedSentencesSet = new Set();
 
-const serverLink = "https://speakeasyserver-vkd5vb5lca-uc.a.run.app/"
+// const serverLink = "https://speakeasyserver-vkd5vb5lca-uc.a.run.app/";
+const serverLink = "http://localhost:3000/";
 
 var originalSet = new Set();
 var rephrasedSet = new Set();
