@@ -98,7 +98,7 @@ body {
     }
     
     .main-header-pages-item{
-        font-size: 16px;
+        font-size: 18px;
         margin-left: 16px;
         margin-right: 16px;
         text-decoration: none;
@@ -154,8 +154,8 @@ body {
     }
     
     .main-header-pages-item{
-        font-size: 12px;
-        margin-left: 12px;
+        font-size: 14px;
+        margin-left: 14px;
         text-decoration: none;
         letter-spacing: 2px;
         text-transform: uppercase;
