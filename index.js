@@ -1,4 +1,3 @@
-const { contains } = require("jquery");
 
 let lastTrigger = 0; //index for keeping track of how many cycles of n milliseconds it has been since last trigger of server call
 let lastText = ""; //most recent text for the edtior box before new trigger
