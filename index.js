@@ -9,7 +9,6 @@ var rephrasedSentencesSet = new Set();
 
 const serverLink = "https://speakeasyserver-vkd5vb5lca-uc.a.run.app/"
 
-
 var originalSet = new Set();
 var rephrasedSet = new Set();
 
@@ -19,6 +18,10 @@ window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
 
+let raw = 0;
+
+console.log(raw);
+raw++;
 //prevent text in the editor box from being too long
 $("#homepage-editor").on("input keypress paste", function(event) {  
     if ($(this).text().length > 420) {
@@ -27,6 +30,8 @@ $("#homepage-editor").on("input keypress paste", function(event) {
     }
 });
 
+console.log(raw);
+raw++;
 //recursive function to trigger message to server every n milliseconds
 function timer(amount) {
     $("#homepage-editor").trigger('message');
@@ -38,10 +43,12 @@ function timer(amount) {
 
 //starting recursive loop for n milliseconds
 timer(loopTime);
-
+console.log(raw);
+raw++;
 //listener for message every n milliseconds
 $("#homepage-editor").on('message', function() {
-
+    console.log(raw);
+    raw++;
     $.get("errorPopup.html", function (errorPopupData) {
     //get rid of excessive spaces, might be erroneous, check this out later
     var text = $("#homepage-editor").text().replaceAll("   ", "");
@@ -52,7 +59,8 @@ $("#homepage-editor").on('message', function() {
         //setting new value for lastText and resetting last trigger index
         lastText = text;
         lastTrigger = 0;
-
+        console.log(raw);
+        raw++;
         var parseCall = contactServer(text, serverLink + 'parse-sentence').then(response => {
             
             var sentences = response.sentences;
@@ -113,14 +121,16 @@ $("#homepage-editor").on('message', function() {
                         curRephrasedSentences.push(response.rephrased[i]);
 
                     }
-
+                    console.log(raw);
+                    raw++;
                     //clear old things
                     $("#error-content").empty();
 
                     var errorIndex = 1;
                     $("#error-content").html("");
                     var hasErrors = false;
-
+                    console.log(raw);
+                    raw++;
                     //looping through them all to check if there are changes ie something was rephrased
                     for (var i = 0; i < curOriginalSentences.length; i++) {
                         
