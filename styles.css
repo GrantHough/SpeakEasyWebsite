@@ -1232,3 +1232,11 @@ body {
     font-weight: 600;
     margin: 12px 16px;
 }
+
+.placeholder {
+    font-size: calc(4px + 2.5vh);
+    font-weight: 600;
+    color: #d8d8d8;
+    align-self: center;
+    margin: 24px 16px;
+}
