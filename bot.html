@@ -20,7 +20,15 @@
         </div>
     </header>
     <div id="main-container">
-        
+        <div id="bot-title-container">
+            <h2 id="bot-title">SpeakEasy Bot</h2>
+            <div id="bot-stats">
+                <h3 class="bot-stat" id="users">Fetching users...</h3>
+                <h3 class="bot-stat" id="servers">Fetching servers...</h3>
+                <h3 class="bot-stat" id="sentences">Fetching sentences...</h3>
+            </div>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1140830654502817834&permissions=277025442822&scope=applications.commands%20bot" target="_blank" rel="noopener noreferrer" class="glass-button" id="homepage-bot-button">Invite SpeakEasy</a>
+        </div>
         <div id="blobs-container">
             <div class="homepage-blob" id="homepage-blob-one"></div>
             <div class="homepage-blob" id="homepage-blob-two"></div>
@@ -31,6 +39,6 @@
     
 </body> 
 <script src="jquery-3.7.1.min.js"></script>
-<script src="index.js"></script>
+<script src="bot.js"></script>
 
 </html>
