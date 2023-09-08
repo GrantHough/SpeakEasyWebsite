@@ -12,7 +12,7 @@ async function updateValues() {
     return fetch(serverLink+"bot-stats").then(results => {
         return results.json();
     }).then(stats => {
-        console.log(stats);
+        // console.log(stats);
         let userCount = addCommas(stats.data.users);
         let serverCount = addCommas(stats.data.servers);
         let sentenceCount = addCommas(stats.data.rated);

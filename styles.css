@@ -5,7 +5,7 @@ html {
 body {
 
      font-family: 'Plus Jakarta Sans', sans-serif;
-     /* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
+     background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%);/* background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%); */
      margin: 0;
      padding: 0;
      /* overscroll-behavior: none; */
@@ -13,7 +13,7 @@ body {
      /* overflow: hidden;
      position: relative; */
      min-height: 100vh;
-     max-height: 1200px;
+
 }
 
 
@@ -26,7 +26,7 @@ body {
     background: linear-gradient(-45deg, rgba(2,0,36,1) 0%, rgb(60, 29, 122) 0%, rgb(6, 161, 238) 100%);
     padding: 20px;
     min-height: 100vh;
-    max-height: 3000px;
+    /* max-height: 3000px; */
     overflow: hidden;
     position: relative;
     
@@ -1240,3 +1240,4 @@ body {
     align-self: center;
     margin: 24px 16px;
 }
+
